@@ -15,34 +15,32 @@ document.querySelector(".scroll-btn").addEventListener("click", () => {
 let img = document.querySelectorAll(".img");
 
 
-
-setInterval(() => {
-    if (slideIndex >= img.length - 1) return;
-    slideIndex++;
-    img[slideIndex].style.transition = "transform 0.5s ease-in-out";
-    img[slideIndex].style.transform = `translateX(${-size*slideIndex}px)`;
-}, 3000);
-
-
 var slideIndex = 0;
 let size = img[0].clientWidth;
-// img[i].style.width = `${size}px`;
+setInterval(()=>{
+    size = img[0].clientWidth;
+    // img[slideIndex].style.transform = `translateX(${size}px)`;
+},1000)
+
 
 document.querySelector('#prev').addEventListener('click', () => {
+    console.log("size",size);
     if (slideIndex <= 0) return;
 
     img[slideIndex].style.transition = "transform 0.7s ease-in-out";
 
-    img[slideIndex].style.transform = `translateX(${size}px)`;
-
+    img[slideIndex].style.transform = `translateX(${size*slideIndex}px)`;
+   
     slideIndex--;
 
 })
 document.querySelector('#next').addEventListener('click', () => {
+    console.log("size",size);
     if (slideIndex >= img.length - 1) return;
     slideIndex++;
     img[slideIndex].style.transition = "transform 0.5s ease-in-out";
     img[slideIndex].style.transform = `translateX(${-size*slideIndex}px)`;
+    
 })
 
 
